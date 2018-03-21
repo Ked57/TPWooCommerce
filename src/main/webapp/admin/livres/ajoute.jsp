@@ -40,7 +40,7 @@
     				out.print(" data-validation=\"url\" data-validation-length=\"1-30\" data-validation-error-msg-url=\"Doit être une url\"");
     			}
     			if(articleField.getName().equalsIgnoreCase("langue")){
-    				out.print(" data-validation=\"length\" data-validation-length=\"0-2\" data-validation-length=\"1-30\" data-validation-error-msg-length=\"La longeur doit être comprise entre 0 et 2 caractères\"");
+    				out.print(" data-validation=\"custom\" data-validation-regexp=\"^([a-zA-Z]+)$\" data-validation-error-msg-custom=\"Ne doit être composé que de lettre \"");
     			}
     			if(articleField.getName().equalsIgnoreCase("prix")){
     				out.print(" data-validation=\"required custom\" data-validation-error-msg-required"+
