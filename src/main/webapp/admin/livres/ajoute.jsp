@@ -45,7 +45,7 @@
     			if(articleField.getName().equalsIgnoreCase("prix")){
     				out.print(" data-validation=\"required custom\" data-validation-error-msg-required"+
     			"=\"Prix obligatoire.\" data-validation-regexp=\"^([0-9]+[.])?[0-9]{1,2}$\""+
-    				" data-validation-error-msg-custom =\"Cette valeur n'est pas un prix.");
+    				" data-validation-error-msg-custom =\"Cette valeur n'est pas un prix.\"");
     			}
     			if(articleField.getName().equalsIgnoreCase("disponibilite")){
     				out.print(" data-validation=\"required number\" data-validation-error-msg-required=\"Disponibilité obligatoire\"");
