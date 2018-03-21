@@ -23,6 +23,14 @@
 			class="menu-item menu-item-type-custom menu-item-object-custom">
 			<a href="<%=response.encodeURL("./controlePanier.jsp")%>">Panier</a>
 		</li>
+		<li id="menu-item-290"
+			class="menu-item menu-item-type-custom menu-item-object-custom">
+			<a href="<%=response.encodeURL("./connexion.jsp")%>">Connexion</a>
+		</li>
+		<li id="menu-item-290"
+			class="menu-item menu-item-type-custom menu-item-object-custom">
+			<a href="<%=response.encodeURL("./inscription.jsp")%>">Inscription</a>
+		</li>
 	</ul>
 </nav>
 <div id="content" class="site-content" tabindex="-1">
