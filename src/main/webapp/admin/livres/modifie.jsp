@@ -57,11 +57,11 @@ if (livre == null)
   }
   Field[] musiqueFields = livre.getClass().getDeclaredFields();
   list = new ArrayList<Field>(Arrays.asList(musiqueFields));
-  for (int i = 0; i < list.size(); i++) {
-    if (list.get(i).getName().equals("dateDeParution")) {
-	  list.remove(i);
-    }
-  }
+//   for (int i = 0; i < list.size(); i++) {
+//     if (list.get(i).getName().equals("dateDeParution")) {
+// 	  list.remove(i);
+//     }
+//   }
   musiqueFields = list.toArray(new Field[musiqueFields.length-2]);
   for (Field articleField : musiqueFields) {
     String articleLabel = articleField.getName().substring(0,1).toUpperCase() + articleField.getName().substring(1) ;
@@ -81,6 +81,9 @@ if (livre == null)
 			}
 			if(articleField.getName().equals("nbPages")){
 				out.print(" data-validation=\"required number\" data-validation-error-msg-required=\"Nombre de pages obligatoire\"");
+			}
+			if(articleField.getName().equals("dateDeParution")){
+				out.print(" data-validation=\"required date\" data-validation-format=\"dd/mm/yyyy\" data-validation-error-msg-required=\"Date de parution obligatoire\" data-validation-error-msg-date=\"Date au format dd/mm/yyyy\"");
 			}
 		  %>
 		  

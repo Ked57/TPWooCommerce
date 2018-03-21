@@ -1,8 +1,8 @@
 <%@ page pageEncoding="UTF-8"%>
 <%@ include file="enTetePageMenu.html"%>
 
-<input type="button" value="Musique" id="musique">
-<input type="button" value="Livre" id="livre">
+<input type="button" value="Administration musique" id="musique" style="width: 50%">
+<input type="button" value="Administration livre" id="livre" style="width: 49%">
 
 <script type="text/javascript">
 	$('#musique').click(function() {
