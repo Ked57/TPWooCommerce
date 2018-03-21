@@ -39,7 +39,7 @@ public class User {
 	public String getPassw() {
 		return passw;
 	}
-	public void getPassw(String passw) {
+	public void setPassw(String passw) {
 		this.passw = passw;
 	}
 	@Basic
