@@ -2,13 +2,14 @@
 <%@ include file="enTetePage.html"%>
 <script type="text/javascript" src="./js/playListJs.jsp"></script>
 <%@ page import="commerce.catalogue.service.CatalogueManager"%>
+<%@ page import="commerce.catalogue.service.UserManager"%>
 <%@ page import="commerce.catalogue.domaine.modele.Article"%>
 <%@ page import="commerce.catalogue.domaine.modele.Livre"%>
 <%@ page import="commerce.catalogue.domaine.modele.Musique"%>
 <%@ page import="commerce.catalogue.domaine.modele.Piste"%>
 <%@ page import="java.util.Iterator"%>
 <%
-	if (session.getAttribute("panier")==null) {
+	if (session.getAttribute("panier") == null) {
 		response.sendRedirect("./index.jsp");
 	} else {
 %>
@@ -23,13 +24,33 @@
 			class="menu-item menu-item-type-custom menu-item-object-custom">
 			<a href="<%=response.encodeURL("./controlePanier.jsp")%>">Panier</a>
 		</li>
+		<%
+			UserManager uManager = (UserManager) application.getAttribute("userManager");
+				Cookie cookie = null;
+				Cookie[] cookies = null;
+
+				// Get an array of Cookies associated with the this domain
+				cookies = request.getCookies();
+
+				if (cookies != null) {
+					for (int i = 0; i < cookies.length; i++) {
+						if(cookies[i].getName().equalsIgnoreCase("token")){
+							cookie = cookies[i];
+						}
+					}
+				}
+		%>
 		<li id="menu-item-290"
 			class="menu-item menu-item-type-custom menu-item-object-custom">
-			<a href="<%=response.encodeURL("./connexion.jsp")%>">Connexion</a>
+			<a href="<% if(cookie != null)response.encodeURL("./admin"); %>">Admin</a>
 		</li>
 		<li id="menu-item-290"
 			class="menu-item menu-item-type-custom menu-item-object-custom">
-			<a href="<%=response.encodeURL("./inscription.jsp")%>">Inscription</a>
+			<a href="<% if(cookie == null)response.encodeURL("./connexion.jsp"); %>">Connexion</a>
+		</li>
+		<li id="menu-item-290"
+			class="menu-item menu-item-type-custom menu-item-object-custom">
+			<a href="<% if(cookie == null)response.encodeURL("./inscription.jsp"); %>">Inscription</a>
 		</li>
 	</ul>
 </nav>
@@ -40,10 +61,8 @@
 				<h1 class="page-title">Résultats de la recherche</h1>
 				<ul class="products">
 					<%
-						CatalogueManager catalogueManager = (CatalogueManager) application
-									.getAttribute("catalogueManager");
-							Iterator<Article> listeDesArticles = catalogueManager
-									.getArticles().iterator();
+						CatalogueManager catalogueManager = (CatalogueManager) application.getAttribute("catalogueManager");
+							Iterator<Article> listeDesArticles = catalogueManager.getArticles().iterator();
 							Livre livre = null;
 							Musique musique = null;
 							Article article;
@@ -51,32 +70,32 @@
 								article = (Article) listeDesArticles.next();
 					%>
 					<li class="product type-product"><a
-						href="<%=response.encodeURL("./controlePanier.jsp?refArticle="
-								+ article.getRefArticle()
-						+ "&amp;commande=ajouterLigne")%>"> <img
-							src="<% if (article.getImage().startsWith("http")) 
-									    out.print(article.getImage()) ;
-							        else
-							        	out.print("./images/"+article.getImage()) ; %>"
+						href="<%=response.encodeURL("./controlePanier.jsp?refArticle=" + article.getRefArticle()
+							+ "&amp;commande=ajouterLigne")%>">
+							<img
+							src="<%if (article.getImage().startsWith("http"))
+						out.print(article.getImage());
+					else
+						out.print("./images/" + article.getImage());%>"
 							class="attachment-shop_catalog wp-post-image" alt="poster_2_up"
-							height="300" width="300"/>
+							height="300" width="300" />
 							<h3><%=article.getTitre()%></h3> <span class="price"><ins>
 									<span class="amount"><%=article.getPrix()%> €</span>
 								</ins></span>
 
 					</a> <a
-						href="<%=response.encodeURL("./controlePanier.jsp?refArticle="
-								+ article.getRefArticle()
-						+ "&amp;commande=ajouterLigne")%>"
+						href="<%=response.encodeURL("./controlePanier.jsp?refArticle=" + article.getRefArticle()
+							+ "&amp;commande=ajouterLigne")%>"
 						class="button add_to_cart_button product_type_simple">Mettre
-							dans le panier</a>
-<%
-                            	if (article instanceof Musique) { 
-                            		musique = (Musique) article;
-                            		if (musique.getPistes().size() > 0) {
-%>
-						<div id="jquery_jplayer_<%=article.getRefArticle()%>" class="jp-jplayer"></div>
-						<div id="jp_container_<%=article.getRefArticle()%>" class="jp-audio" role="application">
+							dans le panier</a> <%
+ 	if (article instanceof Musique) {
+ 				musique = (Musique) article;
+ 				if (musique.getPistes().size() > 0) {
+ %>
+						<div id="jquery_jplayer_<%=article.getRefArticle()%>"
+							class="jp-jplayer"></div>
+						<div id="jp_container_<%=article.getRefArticle()%>"
+							class="jp-audio" role="application">
 							<div class="jp-type-playlist">
 								<div class="jp-gui jp-interface">
 									<div class="jp-controls-holder">
@@ -100,11 +119,10 @@
 										plugin</a>.
 								</div>
 							</div>
-						</div> 
-<%
-                            		}
-                            	}
-							}
+						</div> <%
+ 	}
+ 			}
+ 		}
  %>
 				</ul>
 			</section>

@@ -9,7 +9,7 @@ import javax.persistence.DiscriminatorValue;
 @Entity (name="commerce.catalogue.domaine.modele.Utilisateur")
 public class User {
 	private int id;
-	private String passw,email,nom,prenom,adresse,telephone;
+	private String passw,token,email,nom,prenom,adresse,telephone;
 	
 	public User(int id, String email, String passw, String nom, String prenom, String adresse, String telephone) {
 		this.id = id;
@@ -19,6 +19,7 @@ public class User {
 		this.prenom = prenom;
 		this.adresse = adresse;
 		this.telephone = telephone;
+		this.token = "";
 	}
 
 	@Id
@@ -34,6 +35,13 @@ public class User {
 	}
 	public void setEmail(String email) {
 		this.email = email;
+	}
+	@Basic
+	public String getToken() {
+		return token;
+	}
+	public void setToken(String token) {
+		this.token = token;
 	}
 	@Basic
 	public String getPassw() {

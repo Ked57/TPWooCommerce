@@ -6,6 +6,8 @@
  */
 package commerce.catalogue.service;
 
+import java.security.NoSuchAlgorithmException;
+
 import javax.servlet.ServletContext;
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
