@@ -20,7 +20,9 @@
         musique.setEAN(request.getParameter("EAN")) ; 
         musique.setImage(request.getParameter("image")) ; 
         musique.setPrix(request.getParameter("prix")) ; 
-        musique.setDisponibilite(request.getParameter("disponibilite")) ; 
+        musique.setDisponibilite(request.getParameter("disponibilite")) ;
+        musique.setArtiste(request.getParameter("artiste"));
+        musique.setLangue(request.getParameter("langue"));
         catalogueManager.soumettreArticle(musique) ;
 	    response.sendRedirect(response.encodeURL("affiche.jsp")) ;
       }
