@@ -23,7 +23,7 @@
         <property name="format_sql">true</property>
         
         <!-- Efface et creee la structure de la base de donnees a chaque lancement. -->
-        <property name="hbm2ddl.auto">create</property>
+        <property name="hbm2ddl.auto">update</property>
          
         <!-- Gestion de la session a l'aide d'un thread. -->
         <property name="current_session_context_class">thread</property>
