@@ -42,7 +42,9 @@
 		%>
 		<%
 			if(cookie != null){
-			 out.print("<li id=\"menu-item-290\"class=\"menu-item menu-item-type-custom menu-item-object-custom\"><a href=\"./admin\")>Admin</a></li>");	
+			 out.print("<li id=\"menu-item-290\"class=\"menu-item menu-item-type-custom menu-item-object-custom\"><a href=\"./admin\")>Admin</a></li>");
+			 
+			 out.print("<li id=\"menu-item-290\"class=\"menu-item menu-item-type-custom menu-item-object-custom\"><a href=\"./deconnexion\")>Deconnexion</a></li>");
 			}	
 			
 			if(cookie == null){
