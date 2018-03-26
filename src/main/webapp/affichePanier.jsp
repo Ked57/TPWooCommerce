@@ -87,7 +87,7 @@
 								}
 							%>
 							<tr>
-								<td class="actions" colspan="6"><input class="button"
+								<td class="actions" style="display:none;" colspan="6"><input id="update_cart" class="button"
 									type="submit" value="Mise à jour du panier" name="update_cart" /></td>
 							</tr>
 						</tbody>
@@ -134,6 +134,9 @@
 	</div>
 </div>
 </div>
+<script>$(".qty").on("input",function(){
+	$("#update_cart").click()
+});</script>
 
 <%
 	}
