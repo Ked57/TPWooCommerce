@@ -1,6 +1,10 @@
 <%@ page pageEncoding="UTF-8"%>
 <%@ include file="enTetePageMenu.html"%>
-
+<p>
+	<a href="<%=response.encodeURL("../afficheRecherche.jsp")%>">
+	<img src="../images/return.svg" width="5%"/>
+	</a>	
+</p>
 <input type="button" value="Administration musique" id="musique" style="width: 50%">
 <input type="button" value="Administration livre" id="livre" style="width: 49%">
 

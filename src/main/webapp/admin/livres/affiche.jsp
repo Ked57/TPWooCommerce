@@ -11,6 +11,12 @@
   else {
 	CatalogueManager catalogueManager = (CatalogueManager)application.getAttribute("catalogueManager") ;
 %>
+	<p>
+		<a href="<%=response.encodeURL("../menu.jsp")%>">
+			<img src="../../images/return.svg" width="5%"/>
+		</a>	
+	</p>
+	
     <section class="entry">
       <table>
 <%
