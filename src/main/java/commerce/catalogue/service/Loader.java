@@ -31,7 +31,7 @@ public class Loader implements ServletContextListener {
 		new InitAmazon(catalogueManager).init();
 		
 		UserManager uManager = new UserManager();
-		uManager.addUser("mdp","admin@admin.com","admin","admin","Rue des admins","0603020105");
+		uManager.addUser("adminadmin","admin@admin.com","admin","admin","Rue des admins","0603020105");
 		this.application.setAttribute("userManager", uManager);
 	}	  
 }
