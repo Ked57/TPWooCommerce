@@ -53,6 +53,7 @@
 			}
 		
 		%>
+		<li> <form action="./afficheRecherche.jsp" method="get"><input name="recherche" value="<% if(request.getParameter("recherche") != null)out.print(request.getParameter("recherche"));%>" type="text" /> <input type="submit" value="Rechercher" /></form></li>
 	</ul>
 </nav>
 <div id="content" class="site-content" tabindex="-1">
@@ -63,7 +64,11 @@
 				<ul class="products">
 					<%
 						CatalogueManager catalogueManager = (CatalogueManager) application.getAttribute("catalogueManager");
-							Iterator<Article> listeDesArticles = catalogueManager.getArticles().iterator();
+							Iterator<Article> listeDesArticles;
+							String recherche = request.getParameter("recherche");
+							if(recherche != null)
+								listeDesArticles = catalogueManager.getArticles(recherche).iterator();
+							else listeDesArticles = catalogueManager.getArticles().iterator();
 							Livre livre = null;
 							Musique musique = null;
 							Article article;

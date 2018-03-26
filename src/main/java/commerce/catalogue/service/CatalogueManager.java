@@ -7,6 +7,7 @@
 
 package commerce.catalogue.service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.hibernate.Session;
@@ -106,5 +107,25 @@ public class CatalogueManager {
 			throw e; 
 		}
 		return articles ;
+	}
+	public List getArticles(String nom) {
+		Session session = HibernateUtil.getSessionFactory().getCurrentSession() ;
+		List searchArticles = new ArrayList<Article>();
+		try {
+			session.beginTransaction();
+			Query query = session.createQuery("from commerce.catalogue.domaine.modele.Article") ;
+			for(int i = 0; i < query.list().size(); ++i) {
+				Article a = (Article)query.list().get(i);
+				if(a.getTitre().toUpperCase().matches("(.*)"+nom.toUpperCase()+"(.*)"))
+					searchArticles.add(a);
+			}
+			session.getTransaction().commit();
+		}
+		catch (RuntimeException e) {
+			if (session.getTransaction() != null)
+				session.getTransaction().rollback();
+			throw e; 
+		}
+		return searchArticles ;
 	}
 }
