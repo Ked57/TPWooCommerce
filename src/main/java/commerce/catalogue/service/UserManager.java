@@ -17,11 +17,13 @@ public class UserManager {
 		users = new ArrayList<>();
 	}
 
-	public void addUser(String passw, String email, String nom, String prenom, String adresse, String telephone) {
+	public User addUser(String passw, String email, String nom, String prenom, String adresse, String telephone) {
 		if (this.getUser(email) == null) {
-			int id = users.size();
-			users.add(new User(id, email, passw, nom, prenom, adresse, telephone));
-		}		
+			int id = users.size()+1;
+			User user = new User(id, email, passw, nom, prenom, adresse, telephone);
+			users.add(user);
+			return user;
+		} else return null;
 	}
 
 	public void removeUser(User user) {

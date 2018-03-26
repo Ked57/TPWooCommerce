@@ -41,13 +41,12 @@
 				}
 		%>
 		<%
-			if(cookie != null){
-			 out.print("<li id=\"menu-item-290\"class=\"menu-item menu-item-type-custom menu-item-object-custom\"><a href=\"./admin\")>Admin</a></li>");
+			if(cookie != null && !cookie.getValue().equalsIgnoreCase("-1")){
+				if(uManager.getUser(1).getToken().equals(cookie.getValue()))
+			 		out.print("<li id=\"menu-item-290\"class=\"menu-item menu-item-type-custom menu-item-object-custom\"><a href=\"./admin\")>Admin</a></li>");
 			 
-			 out.print("<li id=\"menu-item-290\"class=\"menu-item menu-item-type-custom menu-item-object-custom\"><a href=\"./deconnexion\")>Deconnexion</a></li>");
-			}	
-			
-			if(cookie == null){
+			 	out.print("<li id=\"menu-item-290\"class=\"menu-item menu-item-type-custom menu-item-object-custom\"><a href=\"./deconnexion.jsp\")>Deconnexion</a></li>");
+			}else{
 				out.print("<li id=\"menu-item-290\" class=\"menu-item menu-item-type-custom menu-item-object-custom\"> <a href=\"./connexion.jsp\">Connexion</a> </li>");
 			
 				out.print("<li id=\"menu-item-290\" class=\"menu-item menu-item-type-custom menu-item-object-custom\"> <a href=\"./inscription.jsp\">Inscription</a> </li>");
