@@ -13,8 +13,28 @@ unArticle = catalogueManager.chercherArticleParRef(refArticle);
 %>
 <div>
 <img src="<% out.print(unArticle.getImage());%>">
-<h1><% out.print(unArticle.getTitre()); %></h1>
 </div>
+<div>
+<p>Nom : <% out.print(unArticle.getTitre()); %></p>
+</div>
+<div>
+<p>Langue : <% out.print(unArticle.getLangue()); %></p>
+</div>
+<div>
+<p>Prix : <% out.print(unArticle.getPrix()); %></p>
+</div>
+<div>
+<p>Ref : <% out.print(unArticle.getRefArticle()); %></p>
+</div>
+<div>
+	<input id="ajout" type="button" value="Ajouter au panier" onclick="ajout()"></input>
+</div>
+
+<script>
+	function ajout() {
+		window.location.replace("<%=response.encodeURL("./controlePanier.jsp?refArticle=" + unArticle.getRefArticle()
+			+ "&commande=ajouterLigne")%>");	}
+</script>
 
 
 <%@ include file="piedDePage.html"%>
