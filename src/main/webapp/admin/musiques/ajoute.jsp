@@ -33,10 +33,10 @@
 		  <input type="text" size="70" name="<%=articleField.getName() %>" value="<%=value %>"
 		  <%
 		  if(articleField.getName().equalsIgnoreCase("titre")){
-				out.print(" data-validation=\"required length\" data-validation-error-msg-required=\"Titre obligatoire\" data-validation-length=\"1-30\" data-validation-length=\"1-30\" data-validation-error-msg-length=\"La longeur doit être comprise entre 1 et 30 caractères\"");
+				out.print(" data-validation=\"required length\" data-validation-error-msg-required=\"Titre obligatoire\" data-validation-length=\"1-50\" data-validation-error-msg-length=\"La longeur doit être comprise entre 1 et 50 caractères\"");
 			}
 			if(articleField.getName().equalsIgnoreCase("image")){
-				out.print(" data-validation=\"url\" data-validation-length=\"1-30\" data-validation-error-msg-url=\"Doit être une url\"");
+				out.print(" data-validation=\"url\" data-validation-error-msg-url=\"Doit être une url\"");
 			}
 			if(articleField.getName().equalsIgnoreCase("langue")){
 				out.print(" data-validation=\"custom\" data-validation-regexp=\"^([a-zA-Z]+)$\" data-validation-error-msg-custom=\"Ne doit être composé que de lettre \"");
