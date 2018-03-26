@@ -40,18 +40,18 @@
 					}
 				}
 		%>
-		<li id="menu-item-290"
-			class="menu-item menu-item-type-custom menu-item-object-custom">
-			<a href="<% if(cookie != null)response.encodeURL("./admin"); %>">Admin</a>
-		</li>
-		<li id="menu-item-290"
-			class="menu-item menu-item-type-custom menu-item-object-custom">
-			<a href="<% if(cookie == null)response.encodeURL("./connexion.jsp"); %>">Connexion</a>
-		</li>
-		<li id="menu-item-290"
-			class="menu-item menu-item-type-custom menu-item-object-custom">
-			<a href="<% if(cookie == null)response.encodeURL("./inscription.jsp"); %>">Inscription</a>
-		</li>
+		<%
+			if(cookie != null){
+			 out.print("<li id=\"menu-item-290\"class=\"menu-item menu-item-type-custom menu-item-object-custom\"><a href=\"./admin\")>Admin</a></li>");	
+			}	
+			
+			if(cookie == null){
+				out.print("<li id=\"menu-item-290\" class=\"menu-item menu-item-type-custom menu-item-object-custom\"> <a href=\"./connexion.jsp\">Connexion</a> </li>");
+			
+				out.print("<li id=\"menu-item-290\" class=\"menu-item menu-item-type-custom menu-item-object-custom\"> <a href=\"./inscription.jsp\">Inscription</a> </li>");
+			}
+		
+		%>
 	</ul>
 </nav>
 <div id="content" class="site-content" tabindex="-1">
